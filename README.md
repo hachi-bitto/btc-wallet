@@ -1,6 +1,8 @@
 # btc-wallet
 Command line tool to generate Bitcoin wallets (for leaning purposes - btc and rust!).
 
+The focus here is not on performance, but on learning.
+
 Idea: implement almost everything related to wallets in order to get a good understand about bitcoin wallets, addresses, and scripts. Also, to learn Rust!
 
 Some of the ideas will probably come from here: https://github.com/rust-bitcoin/rust-wallet
@@ -33,7 +35,6 @@ Resources that may help:
 [https://en.bitcoin.it/wiki/Transaction](https://en.bitcoin.it/wiki/Transaction)
 [https://en.bitcoin.it/wiki/Pay_to_script_hash](https://en.bitcoin.it/wiki/Pay_to_script_hash)
 [https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses](https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses)
-[https://en.bitcoin.it/wiki/Base58Check_encoding](https://en.bitcoin.it/wiki/Base58Check_encoding)
 [https://en.bitcoin.it/wiki/Deterministic_wallet](https://en.bitcoin.it/wiki/Deterministic_wallet)
 [https://en.bitcoin.it/wiki/Wallet_encryption](https://en.bitcoin.it/wiki/Wallet_encryption)
 [https://en.bitcoin.it/wiki/Script](https://en.bitcoin.it/wiki/Script)
