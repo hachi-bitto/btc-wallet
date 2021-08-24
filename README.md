@@ -35,6 +35,5 @@ Resources that may help:
 [https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses](https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses)
 [https://en.bitcoin.it/wiki/Deterministic_wallet](https://en.bitcoin.it/wiki/Deterministic_wallet)
 [https://en.bitcoin.it/wiki/Wallet_encryption](https://en.bitcoin.it/wiki/Wallet_encryption)
-[https://en.bitcoin.it/wiki/Script](https://en.bitcoin.it/wiki/Script)
 [https://en.bitcoin.it/wiki/Seed_phrase](https://en.bitcoin.it/wiki/Seed_phrase)
 [https://en.bitcoin.it/wiki/Wallet_import_format](https://en.bitcoin.it/wiki/Wallet_import_format)
