@@ -1,9 +1,10 @@
 use derive_tag::{FromTag, ToTag};
 use std::convert::TryInto;
+use strum_macros::EnumString;
 use tag::{FromTag, ToTag};
 
 #[allow(non_camel_case_types)]
-#[derive(Debug, PartialEq, ToTag, FromTag)]
+#[derive(Debug, PartialEq, ToTag, FromTag, EnumString)]
 #[repr(u8)]
 pub enum Script {
     // holds bytes pushed to the stack and the value of the amount of bytes that
@@ -252,7 +253,7 @@ impl ToScript for Vec<u8> {
     }
 }
 
-trait FromScript {
+pub trait FromScript {
     fn from_script(&self) -> Vec<u8>;
 }
 

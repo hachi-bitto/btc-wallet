@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "wallet",
+    "script-macro",
     "tag",
     "derive-tag",
 ]

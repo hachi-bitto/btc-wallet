@@ -15,4 +15,6 @@ hex-literal="0.3.3"
 rand = "0.8.4"
 rust-crypto = "^0.2"
 tag = { path = "../tag" }
+strum = "0.21"
+strum_macros = "0.21"
 derive-tag = { path = "../derive-tag" }
