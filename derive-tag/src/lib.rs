@@ -4,15 +4,16 @@ use syn;
 
 #[proc_macro_derive(ToTag)]
 pub fn to_tag_derive(input: TokenStream) -> TokenStream {
-    let ast = syn::parse(input).unwrap();
-    impl_to_tag(&ast)
+    syn::parse(input)
+        .map(|ast| impl_to_tag(&ast))
+        .unwrap_or_else(|e| e.to_compile_error().into())
 }
 
 fn impl_to_tag(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
 
     let gen = quote! {
-        impl ToTag for #name {
+        impl tag::ToTag for #name {
             fn to_tag(&self) -> u8 {
                 unsafe { *(self as *const Self as *const u8) }
             }
@@ -24,21 +25,18 @@ fn impl_to_tag(ast: &syn::DeriveInput) -> TokenStream {
 
 #[proc_macro_derive(FromTag)]
 pub fn from_tag_derive(input: TokenStream) -> TokenStream {
-    let ast = syn::parse(input).unwrap();
-    impl_from_tag(&ast)
+    let ast = syn::parse_macro_input!(input as syn::DeriveInput);
+
+    impl_from_tag(&ast).unwrap_or_else(|e| e.to_compile_error().into())
 }
 
-fn impl_from_tag(ast: &syn::DeriveInput) -> TokenStream {
+fn impl_from_tag(ast: &syn::DeriveInput) -> Result<TokenStream, syn::Error> {
     let name = &ast.ident;
 
     let mut match_variants = quote!();
 
     match &ast.data {
-        syn::Data::Enum(syn::DataEnum {
-            variants,
-            enum_token: _x,
-            brace_token: _y,
-        }) => {
+        syn::Data::Enum(syn::DataEnum { variants, .. }) => {
             for variant in variants.iter() {
                 if variant.discriminant.is_none() {
                     continue;
@@ -51,11 +49,22 @@ fn impl_from_tag(ast: &syn::DeriveInput) -> TokenStream {
                 });
             }
         }
-        _ => panic!("Can only use FromTag on Enums."),
+        syn::Data::Struct(s) => {
+            return Err(syn::Error::new(
+                s.struct_token.span,
+                "Can only use FromTag on Enums.",
+            ))
+        }
+        syn::Data::Union(u) => {
+            return Err(syn::Error::new(
+                u.union_token.span,
+                "Can only use FromTag on Enums.",
+            ))
+        }
     };
 
     let gen = quote! {
-        impl FromTag for #name {
+        impl tag::FromTag for #name {
             fn from_tag(tag: u8) -> #name {
                 match tag {
                     #match_variants
@@ -65,5 +74,5 @@ fn impl_from_tag(ast: &syn::DeriveInput) -> TokenStream {
         }
     };
 
-    gen.into()
+    Ok(gen.into())
 }
