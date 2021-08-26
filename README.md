@@ -1,4 +1,6 @@
 # btc-wallet
+Use `cargo +nightly <command>` or use `rustc 1.56.0-nightly`.
+
 Command line tool to generate Bitcoin wallets (for leaning purposes - btc and rust!).
 
 The focus here is not on performance, but on learning.
@@ -35,6 +37,5 @@ Resources that may help:
 [https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses](https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses)
 [https://en.bitcoin.it/wiki/Deterministic_wallet](https://en.bitcoin.it/wiki/Deterministic_wallet)
 [https://en.bitcoin.it/wiki/Wallet_encryption](https://en.bitcoin.it/wiki/Wallet_encryption)
-[https://en.bitcoin.it/wiki/Script](https://en.bitcoin.it/wiki/Script)
 [https://en.bitcoin.it/wiki/Seed_phrase](https://en.bitcoin.it/wiki/Seed_phrase)
 [https://en.bitcoin.it/wiki/Wallet_import_format](https://en.bitcoin.it/wiki/Wallet_import_format)

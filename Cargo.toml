@@ -1,14 +1,6 @@
-[package]
-name = "btc-wallet"
-version = "0.1.0"
-authors = ["Leonardo Felipe Nerone <leonardofelipenerone@gmail.com>"]
-edition = "2018"
-readme = "README.md"
-repository = "https://github.com/LeoNero/btc-wallet"
-license-file = "LICENSE"
-
-[dependencies]
-hex = "0.4.3"
-hex-literal="0.3.3"
-rand = "0.8.4"
-rust-crypto = "^0.2"
+[workspace]
+members = [
+    "wallet",
+    "tag",
+    "derive-tag",
+]
